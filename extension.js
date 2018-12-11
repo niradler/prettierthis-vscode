@@ -26,7 +26,10 @@ function activate(context) {
             const text = editor.document.getText(editor.selection);
         console.log(text)
         const edit = new vscode.WorkspaceEdit();
+
         edit.insert(document.uri, firstLine.range.start, '42\n');
+        // edit.replace(document.uri, {startLine: 0, startCharacter: 0, endLine: 2, endCharacter: 0}, 'Hello world\n');
+
         console.log( ' firstLine.range.start',firstLine.range.start,document.uri)
         return vscode.workspace.applyEdit(edit)
         }
