@@ -16,8 +16,8 @@
     },
     "homepage": "https://niradler.com",
     "publisher": "niradler",
-    "description": "run prettier on the current selection.",
-    "version": "0.0.2",
+    "description": "Run prettier on the current selection.",
+    "version": "0.0.3",
     "engines": {
         "vscode": "^1.29.0"
     },
