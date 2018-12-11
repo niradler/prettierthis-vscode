@@ -32,7 +32,7 @@ function activate(context) {
 
             return vscode
                 .workspace
-                .applyEdit(edit)
+                .applyEdit(edit);
         }
     });
 
