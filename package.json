@@ -1,7 +1,9 @@
 {
     "name": "prettierthis",
-    "displayName": "prettierthis",
-    "description": "run prettier on the current file.",
+    "displayName": "PrettierThis",
+    "author": "Nir Adler",
+    "publisher":"niradler",
+    "description": "run prettier on the current selection.",
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.29.0"
