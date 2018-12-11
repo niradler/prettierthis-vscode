@@ -15,29 +15,30 @@
     "main": "./extension",
     "contributes": {
         "commands": [
-          {
-            "command": "extension.prettierthis",
-            "title": "Prettier This"
-          }
+            {
+                "command": "extension.prettierthis",
+                "title": "Prettier This"
+            }
         ],
         "menus": {
-          "editor/context": [
-            {
-              "command": "extension.prettierthis",
-              "group": "YourGroup@1"
-            }
-          ]
+            "editor/context": [
+                {
+                    "command": "extension.prettierthis",
+                    "group": "YourGroup@1"
+                }
+            ]
         }
-      },
+    },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^3.1.4",
-        "vscode": "^1.1.25",
-        "eslint": "^4.11.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "eslint": "^4.11.0",
+        "prettier": "1.15.3",
+        "typescript": "^3.1.4",
+        "vscode": "^1.1.25"
     }
 }

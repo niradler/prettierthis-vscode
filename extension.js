@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const prettier = require("prettier");
 const editor = vscode.window.activeTextEditor;
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -17,26 +18,22 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('extension.prettierthis', function () {
         // The code you place here will be executed every time your command is executed
-        
         if (editor) {
-            console.log(getLang(editor.document.languageId))
+
             const {document} = editor;
-            const firstLine = document.lineAt(0);
-            console.log({firstLine})
-            const text = editor.document.getText(editor.selection);
-        console.log(text)
-        const edit = new vscode.WorkspaceEdit();
+            const lang = getLang(document.languageId);
+            console.log(lang)
+            const selection_range = editor["_selections"][0];
+            const text = document.getText(editor.selection);
+            const formated = prettier.format(text, {});
+            const edit = new vscode.WorkspaceEdit();
+            edit.replace(document.uri, selection_range, formated);
+            vscode.window.showInformationMessage('PrettierThis run complete!');
 
-        edit.insert(document.uri, firstLine.range.start, '42\n');
-        // edit.replace(document.uri, {startLine: 0, startCharacter: 0, endLine: 2, endCharacter: 0}, 'Hello world\n');
-
-        console.log( ' firstLine.range.start',firstLine.range.start,document.uri)
-        return vscode.workspace.applyEdit(edit)
+            return vscode
+                .workspace
+                .applyEdit(edit)
         }
-        
-        
-        // Display a message box to the user
-        vscode.window.showInformationMessage('PrettierThis run complete!');
     });
 
     context.subscriptions.push(disposable);
