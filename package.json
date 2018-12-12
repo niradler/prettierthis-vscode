@@ -23,7 +23,7 @@
         "vscode": "^1.29.0"
     },
     "categories": [
-        "Other"
+        "Formatters"
     ],
     "activationEvents": [
         "onCommand:extension.prettierthis"
