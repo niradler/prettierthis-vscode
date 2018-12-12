@@ -18,7 +18,7 @@
     "homepage": "https://niradler.com",
     "publisher": "niradler",
     "description": "Run prettier on the current selection.",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "engines": {
         "vscode": "^1.29.0"
     },
@@ -46,6 +46,8 @@
         }
     },
     "scripts": {
+        "create-publisher":"vsce create-publisher niradler",
+        "publish":"vsce publish",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "echo \"no tests\"",
         "test-vscode": "node ./node_modules/vscode/bin/test"
