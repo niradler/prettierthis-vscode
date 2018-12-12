@@ -1,2 +1,5 @@
-# prettierthis
-run prettier on selected text.
+# PrettierThis
+
+Run prettier on selected text.
+
+![](demo.gif)
