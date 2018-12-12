@@ -1,6 +1,7 @@
 {
     "name": "prettierthis",
     "displayName": "PrettierThis",
+    "icon": "icon.png",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/niradler/prettierthis-vscode"
@@ -17,7 +18,7 @@
     "homepage": "https://niradler.com",
     "publisher": "niradler",
     "description": "Run prettier on the current selection.",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "engines": {
         "vscode": "^1.29.0"
     },
@@ -29,15 +30,19 @@
     ],
     "main": "./extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.prettierthis",
-            "title": "Prettier This"
-        }],
-        "menus": {
-            "editor/context": [{
+        "commands": [
+            {
                 "command": "extension.prettierthis",
-                "group": "YourGroup@1"
-            }]
+                "title": "Prettier This"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "extension.prettierthis",
+                    "group": "YourGroup@1"
+                }
+            ]
         }
     },
     "scripts": {
@@ -45,11 +50,14 @@
         "test": "echo \"no tests\"",
         "test-vscode": "node ./node_modules/vscode/bin/test"
     },
+    "dependencies": {
+        "prettier": "^1.15.3"
+    },
     "devDependencies": {
         "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
         "eslint": "^4.11.0",
-        "prettier": "1.15.3",
+        "prettier": "^1.15.3",
         "typescript": "^3.1.4",
         "vscode": "^1.1.25"
     }
