@@ -15,7 +15,7 @@ function activate(context) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.prettierthis', function () {
+    let disposable = vscode.commands.registerCommand('extension.prettierthis', async function () {
         // The code you place here will be executed every time your command is executed
         try {
             const langs = [{lang:'javascript',ext:"js"}] ;
@@ -27,7 +27,21 @@ function activate(context) {
                 console.log(lang)
                 const selection_range = editor["_selections"][0];
                 const text = document.getText(editor.selection);
-                const formated = prettier.format(text, {});
+                let opts;
+                try {
+                    const filepath = document.isUntitled
+                        ? (
+                            vscode.workspace.workspaceFolders &&
+                            vscode.workspace.workspaceFolders.length
+                        )
+                            ? vscode.workspace.workspaceFolders[0].uri.fsPath
+                            : process.cwd()
+                        : document.fileName;
+                    opts = await prettier.resolveConfig(filepath) || {};
+                } catch ( err ) {
+                    opts = {};
+                }
+                const formated = prettier.format(text, opts);
                 const edit = new vscode.WorkspaceEdit();
                 edit.replace(document.uri, selection_range, formated);
                 vscode.window.showInformationMessage('PrettierThis run complete!');
